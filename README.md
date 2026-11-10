@@ -1,4 +1,4 @@
-# Chessboard Robot Navigation Visualizer
+# Rook finds the path: Chessboard Robot Navigation Visualizer
 
 An interactive visualizer for **Greedy Best-First Search** and **A\*** on a chessboard-style grid.
 Angular renders and animates; Django REST Framework validates requests and runs the algorithms.
