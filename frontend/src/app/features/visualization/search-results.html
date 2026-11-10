@@ -1,0 +1,38 @@
+@if (result(); as result) {
+  <section class="results" aria-label="Search results">
+    <h2 class="title">Results: {{ name() }}</h2>
+
+    @if (progress().total > 0) {
+      <label class="progress">
+        <span>{{ progress().drawn }} of {{ progress().total }} steps drawn</span>
+        <progress [max]="progress().total" [value]="progress().drawn"></progress>
+      </label>
+    }
+
+    @if (noPath()) {
+      <p class="message message--bad">No path exists from start to end with these barriers.</p>
+    }
+    @if (greedyNote()) {
+      <p class="message">Greedy Best-First does not guarantee the shortest path.</p>
+    }
+
+    <dl class="metrics">
+      <div class="metrics__row">
+        <dt>Explored nodes</dt>
+        <dd>{{ finished() ? result.metrics.explored_nodes : '—' }}</dd>
+      </div>
+      <div class="metrics__row">
+        <dt>Path length (moves)</dt>
+        <dd>{{ finished() && !noPath() ? result.metrics.path_length : '—' }}</dd>
+      </div>
+      <div class="metrics__row">
+        <dt>Path cost</dt>
+        <dd>{{ finished() && !noPath() ? result.metrics.path_cost : '—' }}</dd>
+      </div>
+      <div class="metrics__row">
+        <dt>Backend search time</dt>
+        <dd>{{ finished() ? (result.metrics.execution_time_ms | number: '1.0-2') + ' ms' : '—' }}</dd>
+      </div>
+    </dl>
+  </section>
+}

@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.progress {
+  display: grid;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+
+  progress {
+    width: 100%;
+  }
+}
+
+.message {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+
+  &--bad {
+    color: var(--color-error);
+    font-weight: 500;
+  }
+}
+
+.metrics {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  font-size: 0.9375rem;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  dt {
+    color: var(--color-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+}

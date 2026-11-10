@@ -1,0 +1,46 @@
+:host {
+  display: block;
+}
+
+.frame {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: #5a4632;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+// The pointer maths in `cellAtPoint` assumes the grid has no border, padding or gap.
+.grid {
+  display: grid;
+  width: 100%;
+  container-type: inline-size;
+  // Symbol size follows the square size: about 70% of one column's width.
+  --node-glyph-size: calc(70cqw / var(--cols));
+  touch-action: none; // a finger drags to draw instead of scrolling the page
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  cursor: crosshair;
+}
+
+.row {
+  display: contents;
+}
+
+.cell {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+
+  &:focus-visible {
+    z-index: 1;
+    outline: 3px solid var(--color-focus);
+    outline-offset: -3px;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+}

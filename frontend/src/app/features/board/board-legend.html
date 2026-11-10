@@ -1,0 +1,12 @@
+<h2 class="title">Legend</h2>
+<ul class="list">
+  @for (item of items; track item.kind) {
+    <li class="item">
+      <span class="node swatch" data-shade="light" [attr.data-kind]="item.kind" aria-hidden="true"></span>
+      <span>
+        <strong>{{ item.label }}</strong>
+        <span class="description">{{ item.description }}</span>
+      </span>
+    </li>
+  }
+</ul>

@@ -1,0 +1,18 @@
+<fieldset class="algorithms" [disabled]="locked()">
+  <legend class="title">Algorithm</legend>
+  @for (algorithm of algorithms; track algorithm.id) {
+    <label class="option">
+      <input
+        type="radio"
+        name="algorithm"
+        [value]="algorithm.id"
+        [checked]="selection.algorithm() === algorithm.id"
+        (change)="selection.select(algorithm.id)"
+      />
+      <span>
+        <strong>{{ algorithm.label }}</strong>
+        <span class="summary">{{ algorithm.summary }}</span>
+      </span>
+    </label>
+  }
+</fieldset>

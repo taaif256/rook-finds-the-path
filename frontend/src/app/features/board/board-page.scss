@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+.workspace {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.board {
+  flex: 1 1 22rem;
+  min-width: 0;
+  max-width: 42rem;
+}
+
+.side {
+  display: grid;
+  flex: 1 1 15rem;
+  gap: 1.25rem;
+  max-width: 24rem;
+}
+
+.hint,
+.notice {
+  margin: 0;
+}
+
+.notice {
+  min-height: 1.5em; // keeps the layout still when a notice appears
+  color: var(--color-error);
+  font-weight: 500;
+}
+
+.summary {
+  display: grid;
+  gap: 0.25rem;
+  margin: 0;
+  font-size: 0.9375rem;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  dt {
+    color: var(--color-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+}

@@ -1,0 +1,103 @@
+:root {
+  --color-ink: #1f2328;
+  --color-paper: #f6f4ef;
+  --color-muted: #5b6168;
+  --color-ok: #3fa66b;
+  --color-error: #d4574a;
+  --color-pending: #c9a227;
+  --color-focus: #1d6fe0;
+
+  // Square colours. Shared by the board, the legend and the tool buttons.
+  --node-light: #f1ead7;
+  --node-dark: #a8b58d;
+  --node-barrier: #2d3138;
+  --node-start: #2f8f5b;
+  --node-end: #c2453a;
+  --node-open: #8fcaf5;
+  --node-closed: #f2a65a;
+  --node-path: #ffe14d;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+/*
+ * One look for every square, wherever it appears (board, legend, tool buttons).
+ * Colour is never the only cue: start and end carry a symbol, open squares a
+ * ring and path squares a dot.
+ */
+.node {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: var(--node-light);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+
+  &[data-shade='dark'] {
+    background: var(--node-dark);
+  }
+
+  &[data-kind='barrier'] {
+    background: var(--node-barrier);
+  }
+
+  &[data-kind='start'] {
+    background: var(--node-start);
+  }
+
+  &[data-kind='end'] {
+    background: var(--node-end);
+  }
+
+  &[data-kind='open'] {
+    background: var(--node-open);
+    box-shadow:
+      inset 0 0 0 1px rgba(0, 0, 0, 0.08),
+      inset 0 0 0 3px rgba(255, 255, 255, 0.65);
+  }
+
+  &[data-kind='closed'] {
+    background: var(--node-closed);
+  }
+
+  &[data-kind='path'] {
+    background: var(--node-path);
+  }
+
+  &[data-kind='start']::after,
+  &[data-kind='end']::after {
+    color: #fff;
+    font-family: 'Segoe UI Symbol', 'Noto Sans Symbols 2', system-ui, sans-serif;
+    font-size: var(--node-glyph-size, 0.9rem);
+    line-height: 1;
+  }
+
+  &[data-kind='start']::after {
+    content: '\265C'; // chess rook: the robot
+  }
+
+  &[data-kind='end']::after {
+    content: '\2691'; // flag: the destination
+  }
+
+  &[data-kind='path']::after {
+    content: '';
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    background: #6b5800;
+  }
+}

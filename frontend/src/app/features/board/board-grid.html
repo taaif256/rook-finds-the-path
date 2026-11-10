@@ -1,0 +1,39 @@
+<div class="frame">
+  <div
+    #grid
+    class="grid"
+    role="grid"
+    aria-label="Chessboard. Use the arrow keys to move and Enter to apply the selected tool."
+    [attr.aria-rowcount]="size().rows"
+    [attr.aria-colcount]="size().cols"
+    [style.--cols]="size().cols"
+    [style.aspect-ratio]="size().cols + ' / ' + size().rows"
+    [style.grid-template-columns]="'repeat(' + size().cols + ', 1fr)'"
+    [style.grid-template-rows]="'repeat(' + size().rows + ', 1fr)'"
+    (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)"
+    (pointerup)="onPointerEnd($event)"
+    (pointercancel)="onPointerEnd($event)"
+    (lostpointercapture)="onPointerEnd($event)"
+    (keydown)="onKeyDown($event)"
+    (focusin)="onFocusIn($event)"
+  >
+    @for (row of rows(); track row.row) {
+      <div class="row" role="row" [attr.aria-rowindex]="row.row + 1">
+        @for (cell of row.cells; track cell.col) {
+          <div
+            class="node cell"
+            role="gridcell"
+            [attr.aria-colindex]="cell.col + 1"
+            [attr.aria-label]="cell.label"
+            [attr.data-row]="cell.row"
+            [attr.data-col]="cell.col"
+            [attr.data-kind]="cell.kind"
+            [attr.data-shade]="cell.shade"
+            [attr.tabindex]="cell.row === tabCell().row && cell.col === tabCell().col ? 0 : -1"
+          ></div>
+        }
+      </div>
+    }
+  </div>
+</div>

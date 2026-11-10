@@ -1,0 +1,32 @@
+<app-board-toolbar />
+
+<div class="workspace">
+  <app-board-grid class="board" />
+
+  <aside class="side">
+    <app-algorithm-selector />
+    <app-playback-controls />
+    <app-search-results />
+
+    <p class="hint">{{ interaction.toolHint() }}</p>
+    <!-- Always in the page so screen readers announce it when text appears. -->
+    <p class="notice" role="status">{{ interaction.notice() }}</p>
+
+    <dl class="summary" aria-label="Board summary">
+      <div class="summary__row">
+        <dt>Start</dt>
+        <dd>{{ startLabel() }}</dd>
+      </div>
+      <div class="summary__row">
+        <dt>End</dt>
+        <dd>{{ endLabel() }}</dd>
+      </div>
+      <div class="summary__row">
+        <dt>Barriers</dt>
+        <dd>{{ barrierCount() }}</dd>
+      </div>
+    </dl>
+
+    <app-board-legend />
+  </aside>
+</div>

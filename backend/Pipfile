@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "<6.2,>=6.1"
+djangorestframework = "<3.19,>=3.18"
+django-cors-headers = "<5.0,>=4.9"
+djoser= "*"
+djangorestframework-simplejwt = "*"
+[dev-packages]
+
+[requires]
+python_version = "3.14"

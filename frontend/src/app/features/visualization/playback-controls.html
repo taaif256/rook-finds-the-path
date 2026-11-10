@@ -1,0 +1,27 @@
+<div class="head">
+  <h2 class="title">Search</h2>
+  <p class="status" role="status" [attr.data-status]="statusKey()">{{ statusLabel() }}</p>
+</div>
+
+<div class="buttons">
+  <button type="button" class="primary" [disabled]="primaryDisabled()" (click)="onPrimary()">
+    {{ primaryLabel() }}
+  </button>
+  <button type="button" [disabled]="!canStep()" (click)="onStep()">Step</button>
+  <button type="button" [disabled]="!canFinish()" (click)="playback.finish()">Skip to end</button>
+  <label class="speed">
+    Speed
+    <select [value]="playback.speed()" (change)="onSpeedChange($event)">
+      @for (option of speeds; track option.id) {
+        <option [value]="option.id" [selected]="option.id === playback.speed()">{{ option.label }}</option>
+      }
+    </select>
+  </label>
+</div>
+
+@if (blockedReason(); as reason) {
+  <p class="message">{{ reason }}</p>
+}
+@if (runner.error(); as error) {
+  <p class="message message--error" role="alert">{{ error }}</p>
+}
