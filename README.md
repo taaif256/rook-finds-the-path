@@ -3,11 +3,6 @@
 An interactive visualizer for **Greedy Best-First Search** and **A\*** on a chessboard-style grid.
 Angular renders and animates; Django REST Framework validates requests and runs the algorithms.
 
-> **Status: Phase 3 (REST API) complete.** The backend is finished: Greedy Best-First Search and
-> A* run behind `POST /api/v1/pathfinding/run/`, which returns the ordered search events and metrics.
-> The interactive board is built in Phases 4 and 5. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
-> for the architecture, API contract and plan.
-
 ## Prerequisites
 
 - Python 3.12+ (Django 6.1 requirement)
