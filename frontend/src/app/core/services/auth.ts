@@ -47,4 +47,20 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('access_token');
   }
+
+  /** True when an access token is stored and has not expired. */
+  isLoggedIn(): boolean {
+    const token = this.getToken();
+    return token !== null && !this.isExpired(token);
+  }
+
+  private isExpired(token: string): boolean {
+    try {
+      const payload = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+      const { exp } = JSON.parse(atob(payload));
+      return typeof exp === 'number' && exp * 1000 <= Date.now();
+    } catch {
+      return true; // not a readable JWT, so it cannot be a valid session
+    }
+  }
 }
