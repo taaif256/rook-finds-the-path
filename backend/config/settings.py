@@ -1,5 +1,5 @@
 """
-Django settings for the Chessboard Robot Navigation Visualizer API.
+Django settings for the "Rook finds the path: Robot Navigation" API.
 
 The API is stateless: board state is never persisted, so no database,
 sessions, authentication, or admin site is configured. Runtime options can be

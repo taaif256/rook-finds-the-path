@@ -1,8 +1,16 @@
+<<<<<<< HEAD
 # Rook finds the path: Chessboard Robot Navigation Visualizer
+=======
+# Rook finds the path: Robot Navigation
+>>>>>>> 4ff5b01 (Update project references from "Chessboard Robot Navigation Visualizer" to "Rook finds the path: Robot Navigation" in documentation and HTML files)
 
 An interactive visualizer for **Greedy Best-First Search** and **A\*** on a chessboard-style grid.
 Angular renders and animates; Django REST Framework validates requests and runs the algorithms.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4ff5b01 (Update project references from "Chessboard Robot Navigation Visualizer" to "Rook finds the path: Robot Navigation" in documentation and HTML files)
 ## Prerequisites
 
 - Python 3.12+ (Django 6.1 requirement)
@@ -12,9 +20,8 @@ Angular renders and animates; Django REST Framework validates requests and runs 
 
 ```bash
 cd backend
-pipenv install 
-pipenv shell
-python manage.py runserver 8000
+pipenv install -r requirements.txt
+pipenv run python manage.py runserver 8000
 ```
 
 Check it: <http://localhost:8000/api/v1/health/>
